@@ -1,0 +1,114 @@
+How to run?
+	1)Download the project 
+	2)Run command:  
+		npm install
+		nodemon start   OR     node server.js
+
+
+
+
+To get all products:
+	GET  http://localhost:4000/api/v1/products/       
+
+Product Filters:
+	get by category:
+ 	GET http://localhost:4000/api/v1/products?category=<your category>&size=<your size>
+	// you can mention any number of fields which are avaliable in the schema
+
+	get as per condition:
+	GET http://localhost:4000/api/v1/products?originalPrice[gte]=500    (in this way you can mention any number of fields)
+	// This gives the products with price greater than or equal to 500
+	// [gte] = greater than or equal to
+	// [lte] = lesser than or equal to
+ 	// [lt] = lesser than
+	// [gt] = greater than
+
+	get in sorted order:
+	GET http://localhost:4000/api/v1/products?sort=originalPrice   (this gives products in sorted order of originalPrice ascending order)
+	GET http://localhost:4000/api/v1/products?sort=-originalPrice   (this gives products in sorted order of originalPrice decending order)
+	// You can mention any number of fields by apending in this way:      sort=originalPrice,discountedPrice
+
+	 getting only limited fields:
+	GET http://localhost:4000/api/v1/products?field=name,price  (this will only return name and the price)
+
+	getting products in pages:
+	GET http://localhost:4000/api/v1/products?page=1&limit=10   (this will return first 10 products, and if you change the page number it will return next 10 products skipping the first 10)(you can also increase the limit)
+
+
+
+To add the product:
+	POST http://localhost:4000/api/v1/products/
+	body as per the Schema mentioned below
+
+To get the items in the cart:
+	GET http://localhost:4000/api/v1/products?id=id1,id2,id3    (this returns the product with the mentioned IDs)
+
+
+To get the single product:
+	GET http://localhost:4000/api/v1/products/ID   (this will return only single product)
+
+To update the product:
+	PATCH http://localhost:4000/api/v1/products/ID
+	and in mention the changes in the body 
+
+To delete the product:
+	DELETE http://localhost:4000/api/v1/products/ID
+
+
+
+
+
+Product Schema:
+{
+    name: {
+      type: String,
+      required: (true, "A product must have a name"),
+      trim: true,
+    },
+    originalPrice: {
+      type: Number,
+      required: (true, "A product must have originalPrice"),
+    },
+    originalPrice: {
+      type: Number,
+      required: (true, "A product must have originalPrice"),
+    },
+    inStock: {
+      type: Boolean,
+      default: true,
+    },
+    description: {
+      type: String,
+      required: (true, "A product must have description"),
+      trim: true,
+    },
+    size: {
+      type: String,
+      required: (true, "A product must have size"),
+      trim: true,
+    },
+    color: {
+      type: String,
+      required: (true, "A product must have color"),
+      trim: true,
+    },
+    brand: {
+      type: String,
+      trim: true,
+    },
+    occasion: {
+      type: String,
+      required: (true, "A product must have occasion"),
+      trim: true,
+    },
+    season: {
+      type: String,
+      required: (true, "A product must have season"),
+      trim: true,
+    },
+    category: {
+      type: String,
+      required: (true, "A product must have category"),
+      trim: true,
+    },
+  }
