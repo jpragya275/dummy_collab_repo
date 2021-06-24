@@ -1,6 +1,6 @@
 const router = require("express").Router();
 //Bring in the User Registration function
-const {userRegister,userLogin,checkRole,userAuth,serializeUser} = require("../utils/Auth");
+const {userRegister,userLogin,checkRole,userAuth,serializeUser} = require("../controllers/authController");
 
 //Users Registration Route
 router.post("/register-user",async(req,res) => {
