@@ -1,0 +1,39 @@
+How to run?
+---
+	1)Download the project 
+	2)Run command:  
+		npm install
+		nodemon start   OR     node server.js
+
+---
+roles involved: user,admin,superadmin   
+---
+
+public link to postman collections:
+---
+https://www.getpostman.com/collections/cd92feb230896fd51482
+---
+users schema:
+---
+name: {
+        type:String,
+        required: true,
+        min:6,
+        max:255
+    },
+    email: {
+        type:String,
+        required: true,
+        max:255,
+        min:6
+    },
+    password:{
+        type:String,
+        required:true,
+        max:1024,
+        min:6
+    },
+    date: {
+        type:Date,
+        default:Date.now
+    }
